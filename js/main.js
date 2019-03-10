@@ -3,14 +3,14 @@ window.onload = function () {
     newgame = document.getElementById('newgame');
 
     //sizing canvas
-    c.width = window.innerWidth-18;
-    c.height = 700;
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
 
     const ctx = c.getContext('2d');
     
     const environment = new Environment(c, ctx);
     
-    const bird = new Bird(300, 300, ctx);
+    const bird = new Bird(250, 300, ctx, c);
     const theme = new Audio();
     theme.src = "./sounds/theme.mp3";
     
@@ -53,9 +53,7 @@ window.onload = function () {
         if (bird.dead){
             theme.pause();
             theme.currentTime = 0;
-            drawGameOver(ctx, c);
-            newgame.style.display = 'inline';
-            
+            drawGameOver(ctx, c);           
         } 
          
         window.requestAnimationFrame(gameLoop);
@@ -76,7 +74,11 @@ function drawGameOver(ctx, c) {
     gameover.classList.add('gameover-container');
     gameover.setAttribute("style", `position: absolute; z-index: 99; top: ${(c.height/2) - 150}px; left: ${(c.width/2)-150}px; width: 300px; height: 300px; background: url(./images/flappygameover.jpg);`);
     document.body.appendChild(gameover);
-    
+    newgame.style.display = 'inline'; 
+    environment.remove();
+    bird.remove();
+    pipes.remove();
+    pipeset.remove();
 }
 
 function newGame(){
