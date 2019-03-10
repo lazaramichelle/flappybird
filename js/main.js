@@ -1,6 +1,5 @@
 window.onload = function () {
     const c = document.getElementById('canvas');
-    newgame = document.getElementById('newgame');
 
     //sizing canvas
     c.width = window.innerWidth;
@@ -71,10 +70,13 @@ function generateRandomPipes(ctx, canvasWidth, canvasHeight) {
 
 function drawGameOver(ctx, c) {
     var gameover = document.createElement("div");
+    let newgame = document.getElementById('newgame');
+    newgame.style.display = 'inline'; 
+    newgame.addEventListener ("click", newGame);
+
     gameover.classList.add('gameover-container');
     gameover.setAttribute("style", `position: absolute; z-index: 99; top: ${(c.height/2) - 150}px; left: ${(c.width/2)-150}px; width: 300px; height: 300px; background: url(./images/flappygameover.jpg);`);
     document.body.appendChild(gameover);
-    newgame.style.display = 'inline'; 
     environment.remove();
     bird.remove();
     pipes.remove();
