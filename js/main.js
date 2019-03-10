@@ -1,9 +1,8 @@
 window.onload = function () {
     const c = document.getElementById('canvas');
 
-    //sizing canvas
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
+    c.width = window.innerWidth-5;
+    c.height = window.innerHeight-5;
 
     const ctx = c.getContext('2d');
     
@@ -60,8 +59,8 @@ window.onload = function () {
 };
 
 function generateRandomPipes(ctx, canvasWidth, canvasHeight) {
-    let lengthTop = Math.round(Math.random() * 200 + 50);
-    let lengthBottom = canvasHeight - 250 - lengthTop;
+    let lengthTop = Math.round(Math.random() * 200 + 180);
+    let lengthBottom = canvasHeight - 350 - lengthTop;
     let returnVal = { };
     returnVal.top = new Pipe(canvasWidth, -5, lengthTop, 4, ctx);
     returnVal.bottom = new Pipe(canvasWidth, canvasHeight + 5 - lengthBottom, lengthBottom, 4, ctx);

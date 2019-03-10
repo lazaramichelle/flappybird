@@ -23,7 +23,7 @@ Score.prototype.update = function (pipes) {
 Score.prototype.render = function(){
     this.ctx.save();
     this.ctx.font = "24px Arial";
-    this.ctx.fillText("Score: " + this.score, 8, 20);
+    this.ctx.fillText("Score: " + this.score, 18, 40);
     this.ctx.restore();
 };
 
